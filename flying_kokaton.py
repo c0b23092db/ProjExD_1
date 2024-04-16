@@ -37,7 +37,7 @@ def main():
         elif pressed_keys[pg.K_LEFT]:
             player_move_x -= 2
         elif pressed_keys[pg.K_RIGHT]:
-            player_move_x += 2
+            player_move_x += 3
             background_x += 1
         if not pressed_keys[pg.K_LEFT]:
             player_move_x -= 1
