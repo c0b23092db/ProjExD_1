@@ -4,7 +4,7 @@ import pygame as pg
 
 def main():
     pg.display.set_caption("はばたけ！こうかとん")
-    background = pg.display.set_mode((800, 600))
+    screen = pg.display.set_mode((800, 600))
     background_img = pg.image.load("fig/pg_bg.jpg")
     player = pg.Surface((25,25))
     player_img = pg.image.load("fig/3.png")
@@ -14,10 +14,10 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-
-        background.blit(background_img, [0, 0])
+        screen.blit(background_img, [0, 0])
+        screen.blit(player_img,[300,200])
         pg.display.update()
-        tmr += 1        
+        tmr += 1
         clock.tick(10)
 
 if __name__ == "__main__":
