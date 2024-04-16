@@ -14,8 +14,10 @@ def main():
     player = pg.image.load("fig/3.png")
     player = pg.transform.flip(player,True,False)
     player_rect = player.get_rect()
+    player_move_x = 0
+    player_move_y = 0
     player_rect.center = 300,200
-    tmr = 0
+    timer = 0
     
     while True:
         pressed_keys =pg.key.get_pressed()
@@ -26,20 +28,23 @@ def main():
         screen.blit(background_img,[background_x*-1+1600,0])
         screen.blit(player,player_rect)
 
-        # 変数
+        # 変数の変更
         if pressed_keys[pg.K_UP]:
-            player_rect.move_ip(0,-2)
+            player_move_y -= 2
         elif pressed_keys[pg.K_DOWN]:
-            player_rect.move_ip(0,2)
+            player_move_y += 2
         elif pressed_keys[pg.K_LEFT]:
-            player_rect.move_ip(-2,0)
+            player_move_x -= 2
         elif pressed_keys[pg.K_RIGHT]:
-            player_rect.move_ip(2,0)
+            player_move_x += 2
             background_x += 1
         if not pressed_keys[pg.K_LEFT]:
-            player_rect.move_ip(-1,0)
+            player_move_x -= 1
+        player_rect.move_ip(player_move_x,player_move_y)
+        player_move_x = 0
+        player_move_y = 0
         background_x = (background_x + 1) % 1600
-        tmr += 1
+        timer += 1
 
         # 更新
         pg.display.update()
