@@ -8,7 +8,7 @@ def main():
     # 初期化 #
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
-        # 変数 #
+        # 変数
     background_img = pg.image.load("fig/pg_bg.jpg")
     background_x = 0
     player = pg.image.load("fig/3.png")
@@ -17,22 +17,23 @@ def main():
     player_move_x = 0
     player_move_y = 0
     player_rect.center = 300,200
-    timer = 0
     
+    # ゲームスタート #
     while True:
         pressed_keys =pg.key.get_pressed()
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
+        # オブジェクト更新
         screen.blit(background_img,[background_x*-1,0])
         screen.blit(background_img,[background_x*-1+1600,0])
         screen.blit(player,player_rect)
 
         # 変数の変更
         if pressed_keys[pg.K_UP]:
-            player_move_y -= 2
+            player_move_y -= 1
         elif pressed_keys[pg.K_DOWN]:
-            player_move_y += 2
+            player_move_y += 1
         elif pressed_keys[pg.K_LEFT]:
             player_move_x -= 2
         elif pressed_keys[pg.K_RIGHT]:
@@ -44,9 +45,8 @@ def main():
         player_move_x = 0
         player_move_y = 0
         background_x = (background_x + 1) % 1600
-        timer += 1
 
-        # 更新
+        # 画面更新
         pg.display.update()
         clock.tick(200)
 
