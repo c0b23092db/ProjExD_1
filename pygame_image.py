@@ -18,7 +18,7 @@ def main():
         screen.blit(player_img,[300,200])
         pg.display.update()
         tmr += 1
-        clock.tick(10)
+        clock.tick(200)
 
 if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
