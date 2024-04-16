@@ -14,11 +14,11 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-        screen.blit(background_img,[background_x,0])
-        background_x -= 1
-        if background_x <= -800:
-            background_x = 0
+        screen.blit(background_img,[background_x*-1,0])
+        screen.blit(background_img,[background_x*-1+1600,0])
+        background_x = (background_x + 2) % 1600
         screen.blit(player_img,[300,200])
+        print(background_x)
         pg.display.update()
         tmr += 1
         clock.tick(200)
